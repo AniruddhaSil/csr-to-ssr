@@ -1,0 +1,15 @@
+.layout {
+    display: grid;
+    grid-template-columns: 3;
+    width: 100%;
+    grid-template-rows: 2;
+    gap: 20px;
+}
+
+.button {
+    background: #000;
+    color: white;
+    font-size: 24px;
+    grid-column-start: 0;
+    grid-column-end: 1;
+}

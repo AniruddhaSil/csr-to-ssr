@@ -1,14 +1,16 @@
-import Blaze from "@/layouts/blaze/Blaze";
-import styles from "./page.module.css";
-import Gifts from "@/layouts/gifts/Gifts";
+import dynamic from 'next/dynamic'
 
-export default async function Home({
+const Gifts = dynamic(() => import('@/layouts/gifts/Gifts'))
+
+const Blaze = dynamic(() => import('@/layouts/blaze/Blaze'))
+
+const Lazy = async ({
   params,
   searchParams,
 }: {
   params: { slug: string };
   searchParams: { [key: string]: string | string[] | undefined };
-}) {
+}) => {
   const getTheme = async () => {
     if (!searchParams.domain) return null;
 
@@ -25,8 +27,13 @@ export default async function Home({
   if (theme === "Blaze") return <Blaze />;
 
   return (
-    <main className={styles.main}>
-      <h1>ServerTeam</h1>
+    <main style={{
+      backgroundColor: 'green',
+      border: '2px solid black'
+    }}>
+      <h1>ServerLazyTeam</h1>
     </main>
   );
-}
+};
+
+export default Lazy;
